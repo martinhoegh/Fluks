@@ -1,0 +1,187 @@
+extends includes/template
+block append vars
+	- var pageTitle = "Flexgrid"
+block content
+	header.container.fluid
+		div.group
+			div.item
+				div ☰
+				div.site-branding
+					h1 Fluks 
+					p [ˈflɔgs] - A responsive grid system built with flexbox
+	div.container
+		div.group.justify-content-center
+			div.item.md-8-of-12.grow-0(role="main")
+				article
+					h1 Grid system
+					p.manchet Fluks is a lightweight mobile first responsive grid.
+					h2 Mobile first
+					p Fluks is based on a mobile first approach. Media queries are <code>min-width</code>-based and every line of code has been written with performance in mind.
+					h2 A flexible grid
+					p.
+						In constrast to most other grid systems Fluks is based on the CSS Flexbox module.
+					p.
+						Flexbox empowers you to think beyond the tradtional grid that consists of rows and columns in a specific order. In Fluks we use groups and items, 
+						which can roughly be compared to rows and cols from other grid systems. But it doesn't make any sense to use these terms in Fluks, because - as you will see - 
+						sometimes a group works as row, sometimes as column and sometimes as something in between.
+					p.
+						Be aware: Flexbox <a href="http://caniuse.com/#feat=flexbox">only works in newer browsers</a>, and Fluks doesn't provide any fallback option for older browsers to use.				
+					h3 Container element
+					p.
+						The container-element is a wrapper that controls whether or not to use max-width on groups. It also controls padding. Containers should be used to control site 
+						content at root-level (e.g. header footer content) and should not be nested.
+					h3 Basic grid
+					p A group contains items. That is how the grid works. It's responsive. It's really that simple.
+					div.box Group
+						div.group
+							div.item 
+								.box item
+							div.item 
+								.box item
+							div.item 
+								.box item
+							div.item
+								.box item
+					pre
+						code.language-markup.
+							&lt;div class=&quot;group&quot;&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+							&lt;/div&gt;
+					p Use <code>no-wrap</code> on the group div to specify if wrapping of items is allowed or not:
+					pre
+						code.language-markup.
+							&lt;div class=&quot;group no-wrap&quot;&gt;
+							...
+					p Use <code>as-row</code> or <code>as-column</code> to control the grid direction. Row is default.
+					div.box Group with column direction
+						div.group.as-column
+							div.item 
+								.box item
+							div.item 
+								.box item
+							div.item 
+								.box item
+							div.item
+								.box item
+					pre
+						code.language-markup.
+							&lt;div class=&quot;group as-column&quot;&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+							&lt;/div&gt;
+					p An item will always try to fill out remaining space. Sometimes you don't want that to happen. In that case use the <code>grow-0</code>-class on an item.
+					div.box Group
+						div.group
+							div.item.grow-0 
+								.box item with with <code>grow-0</code>
+							div.item 
+								.box item
+					pre
+						code.language-markup.
+							&lt;div class=&quot;group&quot;&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item 
+								&lt;/div&gt;
+								&lt;div class=&quot;item&quot;&gt;
+									item
+								&lt;/div&gt;
+							&lt;/div&gt;					
+					h3 A controlled grid
+					p While a basic grid often is suitable for small applications or nested grids, you'll probaly need a more systematic approach to your grid - you need a controlled grid.
+					p In Fluks there are two separate grids available for you out-of-the-box. A grid for small screens and a grid for larger screens. The grid for larger screens have dedicated classes for each breakpoint.		
+					div.group
+						div.item.sm-3-of-4.md-4-of-12.lg-6-of-12.grow-0
+							div.box sm-3-of-4, md-4-of-12, lg-6-of-12
+					p The <code>grow-0</code>-class comes i handy here.
+					div.group
+						div.item.md-4-of-12
+							div.box 4 of 12
+					p That is pretty smart because it will enable you to something like this
+					div.group
+						div.item.md-4-of-12.grow-0 
+							div.box 4-12
+						div.item.md-4-of-12
+							div.box 4-12 without grow-0
+					h3 Offsets
+					p It's possible to offset items in a controlled grid.
+					div.item.sm-3-of-4.sm-offset-1-of-4.md-4-of-12.md-offset-4-of-12.lg-6-of-12.lg-offset-6-of-12.grow-0
+							div.box sm-3-of-4, sm-offset-1-of-4, md-4-of-12 md-offset-4-of-12, lg-6-of-12, lg-offset-6-of-12
+					h3 Nesting
+					p You can man make arbritarary many nestings in the grid.
+					div.group
+						div.item.md-6-of-12
+							div.box Level 1 
+								div.group
+									div.item.md-6-of-12
+										div.box Level 2
+									div.item.md-6-of-12
+										div.box Level 2
+						div.item.md-6-of-12
+							div.box Level 1 
+								div.group
+									div.item.md-6-of-12
+										div.box Level 2
+									div.item.md-6-of-12
+										div.box Level 2
+											div.group
+												div.item
+													div.box Level 3
+					h3 Direction
+					p Normal grid system lets you control the items from a row-centric (horisontal) method. Fluks also lets you control the grid from a column perspective.
+
+					h3 Alignment
+					p Justify
+
+					p Use <code>align-items-start</code>, <code>align-items-end</code> og <code>align-items-center</code> to set the alignment of the items in a group.
+					div.group
+						div.item.md-12-of-12.grow-0
+							div.box A group with <code>align-items-center</code>
+								div.group.align-items-center
+									div.item.md-4-of-12
+										div.box Some content
+									div.item.md-4-of-12
+										div.box(style="height:200px") Som content with a different height
+									div.item.md-4-of-12
+										div.box Some content				 
+					p <code>align-self-start</code>, <code>align-self-end</code> og <code>align-self-center</code> can be used to set the alignment on a specific item. 
+					div.group
+						div.item.md-12-of-12.grow-0
+							div.box
+								div.group
+									div.item.md-4-of-12.align-self-end
+										div.box Some content with class "align-self-end"
+									div.item.md-4-of-12
+										div.box(style="height:200px") Som content with a different height
+									div.item.md-4-of-12.align-self-center
+										div.box Some content with class "align-self-center"	
+					h3 Order
+					p You can control the order of items really easy.  						
+					div.group
+						div.item.md-12-of-12
+							div.box
+								div.group
+									div.item.md-3-of-12.md-order-1
+										div.box Navigation	
+									div.item.md-9-of-12
+										div.box Main content
+	footer.container.fluid
+		div.group(role="contentinfo")
+			div.item
+				&copy; Martin (2015-)
+	script(src="scripts/prism.js")
+	script(src="scripts/prism-line-numbers.js")

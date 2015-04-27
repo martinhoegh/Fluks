@@ -1,0 +1,9 @@
+@import 'includes/configuration.less';
+@import 'includes/flexbox-mixin.less';
+@import 'includes/grid.less';
+// PRODUCES THE GRID FOR XL-SCREENS
+@media (min-width: @xl) { // @xl is set from configuration.less
+	.produce-columns(@numberOfCols,xl);
+	.produce-offset-columns(@numberOfCols,xl);
+	.produce-order(@numberOfCols,xl);
+}

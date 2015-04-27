@@ -1,0 +1,30 @@
+extends includes/template
+block append vars
+	- var pageTitle = "Flexgrid"
+block content
+	div.container.fluid
+		div.group
+			div.item
+				div.box
+					h1 Header
+	div.container
+		div.group
+			div.item.md-4-of-12.lg-3-of-12
+				div.box Item 1
+			div.item.md-8-of-12.lg-half
+				div.box	Item 2
+			div.item.md-full.lg-3-of-12
+				div.box Item 3
+					div.group
+						div.item.md-half.lg-full
+							div.box Item 3a
+						div.item.md-half.lg-full
+							div.box Item 3b
+		div.group
+			div.item.md-half.md-offset-6-of-12
+				div.box Item with offset
+	div.container.fluid
+		div.group
+			div.item
+				div.box
+					h2 Footer

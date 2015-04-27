@@ -1,0 +1,14 @@
+@import 'includes/configuration.less';
+@import 'includes/flexbox-mixin.less';
+@import 'includes/grid.less';
+// PRODUCES THE GRID FOR MD-SCREENS
+@media (min-width: @md) { // @md is set from configuration.less
+	body {
+		.flex-display;
+		.flex-direction(column);
+	}
+	.container {.flex(none);}
+	.produce-columns(@numberOfCols,md); // @numberOfCols is set from configuration.less
+	.produce-offset-columns(@numberOfCols,md);
+	.produce-order(@numberOfCols,md);	
+}

@@ -1,0 +1,31 @@
+// ---- THE GRID BUILDER sTARTS HERE ----
+
+// Mixin for item width
+.item(@value) {
+	min-width: @value;
+	.flex-basis(@width: @value)
+}
+// Mixin for column classes
+.produce-columns(@n; @bp; @i: 1) when (@i < @n) {
+  .@{bp}-@{i}-of-@{n} {
+    .item((@i * 100% / @n));
+  }
+  .produce-columns(@n; @bp; (@i + 1));
+}
+.produce-columns(@n; @bp; @i: 1) when (@i = @n) {
+  .@{bp}-@{n}-of-@{n} {.item(100%)}
+  .@{bp}-full {.item(100%)}
+  .@{bp}-half {.item(50%)}  
+}
+// Mixin for offset-column classes
+.produce-offset-columns(@n; @bp; @i: 1) when (@i < @n) {
+  .@{bp}-offset-@{i}-of-@{n} {
+    margin-left: (@i * 100% / @n);
+  }
+  .produce-offset-columns(@n; @bp; (@i + 1));
+}
+// Mixin for order classes
+.produce-order(@n; @bp; @i:-1) when (@i =< @n) {
+	.@{bp}-order-@{i} {.flex-order(@i)}
+	.produce-order(@n; @bp; (@i+1));
+}

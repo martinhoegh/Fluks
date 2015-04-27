@@ -1,0 +1,9 @@
+@import 'includes/configuration.less';
+@import 'includes/flexbox-mixin.less';
+@import 'includes/grid.less';
+// PRODUCES THE GRID FOR LG-SCREENS
+@media (min-width: @lg) { // @lg is set from configuration.less
+	.produce-columns(@numberOfCols,lg);
+	.produce-offset-columns(@numberOfCols,lg);
+	.produce-order(@numberOfCols,lg);	
+}
